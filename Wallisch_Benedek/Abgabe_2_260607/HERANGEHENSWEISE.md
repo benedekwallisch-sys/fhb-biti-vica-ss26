@@ -23,7 +23,7 @@ Die Bereitstellung sowie das LÃ¶schen der Infrastruktur erfolgen automatisiert Ã
 ## Verwendete Technologien
 
 - Exoscale
-- OpenTofu/Terraform
+- Terraform
 - CloudInit
 - GitHub Actions
 - Nginx
