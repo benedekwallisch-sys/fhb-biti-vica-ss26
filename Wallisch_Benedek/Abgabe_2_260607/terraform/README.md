@@ -1,6 +1,6 @@
 # Abgabe 2 – Virtualisierungstechnologien
 
-Diese Abgabe erstellt automatisiert eine virtuelle Maschine auf Exoscale mittels OpenTofu/Terraform.
+Diese Abgabe erstellt automatisiert eine virtuelle Maschine auf Exoscale mittels Terraform.
 
 ## Funktionen
 
