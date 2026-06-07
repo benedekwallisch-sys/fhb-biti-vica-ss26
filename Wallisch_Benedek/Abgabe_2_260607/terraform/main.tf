@@ -53,5 +53,7 @@ resource "exoscale_compute_instance" "vm" {
 
   user_data = templatefile("${path.module}/cloud-init.yaml.tftpl", {
     vm_name = local.name
+    app_py  = indent(6, file("${path.module}/files/app.py"))
+  })
   })
 }
