@@ -56,8 +56,3 @@ resource "exoscale_compute_instance" "vm" {
     app_py  = indent(6, file("${path.module}/files/app.py"))
   })
 }
-
-
-
-  })
-}
