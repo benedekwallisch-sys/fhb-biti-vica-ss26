@@ -2,7 +2,7 @@
 
 ## Ziel
 
-Ziel der Aufgabe war die automatisierte Bereitstellung einer virtuellen Maschine auf Exoscale unter Verwendung von OpenTofu/Terraform und GitHub Actions.
+Ziel der Aufgabe war die automatisierte Bereitstellung einer virtuellen Maschine auf Exoscale unter Verwendung von Terraform und GitHub Actions.
 
 ## Umsetzung
 
