@@ -1,32 +1,42 @@
 #cloud-config
+
 package_update: true
 package_upgrade: true
 
 packages:
-  - python3
+  - nginx
 
 write_files:
-  - path: /opt/vm-info-app.py
-    permissions: '0755'
+  - path: /var/www/html/index.html
+    permissions: "0644"
     content: |
-            ${app_py}
+      <!DOCTYPE html>
+      <html>
+      <head>
+          <title>Abgabe 2 Virtualisierung</title>
+      </head>
+      <body>
+          <h1>Abgabe 2 - Virtualisierungstechnologien</h1>
+          <p>VM Name: ${vm_name}</p>
+          <p>Bereitgestellt mit Terraform auf Exoscale.</p>
+          <p><a href="/api/v1/system.json">API aufrufen</a></p>
+      </body>
+      </html>
 
-  - path: /etc/systemd/system/vm-info.service
+  - path: /var/www/html/api/v1/system.json
+    permissions: "0644"
     content: |
-      [Unit]
-      Description=VM Info Web Service
-      After=network-online.target
-      Wants=network-online.target
-
-      [Service]
-      ExecStart=/usr/bin/python3 /opt/vm-info-app.py
-      Restart=always
-      User=root
-
-      [Install]
-      WantedBy=multi-user.target
+      {
+        "student": "Benedek Wallisch",
+        "assignment": "Abgabe 2",
+        "vm_name": "${vm_name}",
+        "platform": "Exoscale",
+        "provisioning": "Terraform",
+        "status": "running"
+      }
 
 runcmd:
-  - systemctl daemon-reload
-  - systemctl enable vm-info.service
-  - systemctl restart vm-info.service
+  - mkdir -p /var/www/html/api/v1
+  - chown -R www-data:www-data /var/www/html
+  - systemctl enable nginx
+  - systemctl restart nginx
